@@ -26,8 +26,8 @@
                 <ul :style="$vuetify.rtl?'direction: ltr':'direction: ltr'">
                   <li :class="$vuetify.rtl?'float-left':'float-right'" style="margin-right: 5px;margin-left: 5px"><a :href="'mailto:'+settings[0].website_email" style="color: white"><i class="fa fa-envelope" aria-hidden="true"></i>{{settings[0].website_email}}</a></li>
                   <li :class="$vuetify.rtl?'float-left':'float-right'" style="margin-right: 5px;margin-left: 5px"><a :href="'tel:'+settings[0].website_phone"  style="color: white"><i class="fa fa-phone" aria-hidden="true"></i>{{settings[0].website_phone}}</a></li>
-                  <li  :class="$vuetify.rtl?'float-left':'float-right'" class="mt-1" >
-                    <v-btn style="color: white" text @click="$store.state.ui.lang_ar = !$store.state.ui.lang_ar;$vuetify.rtl=!$vuetify.rtl "><i class="fa fa-language" aria-hidden="true"></i>{{$store.state.ui.lang_ar?'EN':'AR'}}</v-btn>
+                  <li style="max-width: 40px !important;"  :class="$vuetify.rtl?'float-left':'float-right'" class="mt-1" >
+                    <v-btn style="color: white;" text @click="$store.state.ui.lang_ar = !$store.state.ui.lang_ar;$vuetify.rtl=!$vuetify.rtl "><i v-if="!$vuetify.breakpoint.xs" class="fa fa-language" aria-hidden="true"></i>{{$store.state.ui.lang_ar?'EN':'AR'}}</v-btn>
                   </li>
                 </ul>
               </div>
@@ -71,14 +71,14 @@
                   </li>
                   <!-----PRODUCTS ---->
                   <li  class=" dropdown megaDropMenu nav-item " >
-                    <a style="font-size: 20px !important;" class="nav-link dropdown-toggle  f-cairo20b" >
+                    <a style="font-size: 20px !important;" class="nav-link  f-cairo20b" >
                       <router-link to="/products">{{$store.state.ui.lang_ar?'المنتجات':'PRODUCTS'}}</router-link>
                     </a>
 
                   </li>
                   <!-----CONTACT US ---->
                   <li class="nav-item dropdown ">
-                    <a style="font-size: 20px !important;" class="nav-link dropdown-toggle  f-cairo20b" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >
+                    <a style="font-size: 20px !important;" class="nav-link  f-cairo20b" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >
                      <router-link to="/about-us"> {{$store.state.ui.lang_ar?'من نحن':'ABOUT US'}}</router-link>
                     </a>
 
@@ -226,6 +226,7 @@
 .nav-item:hover a{
   color: black;
 }
+
   .my-a:hover{
     color: black !important;
   }

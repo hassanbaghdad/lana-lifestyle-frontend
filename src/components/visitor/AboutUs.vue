@@ -22,10 +22,10 @@
 
 
                                 <p v-if="!$store.state.ui.lang_ar">
-                                    {{$store.state.render.settings[0].about_en}}
+                                    {{settings[0].about_en}}
                                 </p>
                                 <p v-if="$store.state.ui.lang_ar" style="font-family: Cairo !important;text-align: justify;">
-                                    {{$store.state.render.settings[0].about_ar}}
+                                    {{settings[0].about_ar}}
                                 </p>
                             </div>
                         </div>
@@ -127,6 +127,16 @@
                     })
                 }
 
+            }
+        },
+        computed:{
+            get_settings:function () {
+                return this.$store.state.render.settings;
+            }
+        },
+        watch:{
+            get_settings:function (new_settings) {
+                this.settings = new_settings;
             }
         }
     }
