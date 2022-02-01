@@ -49,7 +49,7 @@
                 </thead>
                 <tbody>
                 <tr v-for="item in messages" :key="item.message_id">
-                    <td class="text-center f18">1</td>
+                    <td class="text-center f18">{{messages.indexOf(item)+1}}</td>
                     <td class="text-center f18">
                         {{item.name}}
                     </td>
