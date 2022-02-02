@@ -76,7 +76,7 @@
 </script>
 
 <style scoped>
-    .f-cairo{
+    *{
         font-family: Cairo !Important;
     }
 </style>

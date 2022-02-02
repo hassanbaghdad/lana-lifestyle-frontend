@@ -14,8 +14,12 @@
                                <v-text-field v-model="settings.website_title_en" label="اسم الموقع باللغة الانكليزية" append-icon="mdi-web"></v-text-field>
                            </v-col>
                            <v-col cols="12" md="6">
-                               <v-text-field v-model="settings.website_phone" label="رقم الهاتف" append-icon="mdi-phone"></v-text-field>
+                               <v-text-field v-model="settings.website_phone" label="رقم الهاتف1" append-icon="mdi-phone"></v-text-field>
                            </v-col>
+                           <v-col cols="12" md="6">
+                               <v-text-field v-model="settings.website_phone2" label="رقم الهاتف2" append-icon="mdi-phone"></v-text-field>
+                           </v-col>
+
                            <v-col cols="12" md="6">
                                <v-text-field v-model="settings.website_email" label="البريد الالكتروني " append-icon="mdi-email"></v-text-field>
                            </v-col>
@@ -74,6 +78,7 @@
                     website_name_ar:'',
                     website_name_en:'',
                     website_phone:'',
+                    website_phone2:'',
                     website_email:'',
                     address:'',
                     about_ar:'',

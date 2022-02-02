@@ -16,39 +16,41 @@
         </v-carousel>
       </v-app>
 
-    <!-- ABOUT SECTION -->
-    <section class="container-fluid clearfix aboutSection patternbg" >
-      <div class="aboutInner">
-        <div class="sepcialContainer">
-          <div class="row">
-            <div class="col-sm-6 col-xs-12 rightPadding">
-              <div class="imagebox " :style="$vuetify.rtl?'transform: scaleX(-1)':'transform: scaleX(1)'">
-                <img class="img-responsive" :data-src="require('@/../public/theme/img/me/about.png')" :src="require('@/../public/theme/img/me/about.png')" alt="Image About">
-              </div>
+<v-app>
+  <!-- ABOUT SECTION -->
+  <section class="container-fluid clearfix aboutSection patternbg" >
+    <div class="aboutInner">
+      <div class="sepcialContainer">
+        <div class="row">
+          <div class="col-sm-6 col-xs-12 rightPadding">
+            <div class="imagebox " :style="$vuetify.rtl?'transform: scaleX(-1)':'transform: scaleX(1)'">
+              <img class="img-responsive" :data-src="require('@/../public/theme/img/me/about.png')" :src="require('@/../public/theme/img/me/about.png')" alt="Image About">
             </div>
-            <div class="col-sm-6 col-xs-12">
+          </div>
+          <div class="col-sm-6 col-xs-12">
 
-              <div class="aboutInfo">
-                <h2 v-if="$store.state.ui.lang_ar" style="font-family: Cairo !important;letter-spacing: normal !important;direction: rtl;text-align: right;font-size: 25px;font-weight: bold">
-                  معلومات عنا
-                </h2>
-                <h2 v-if="!$store.state.ui.lang_ar">
-                  ABOUT US
-                </h2>
-                <v-divider/>
+            <div class="aboutInfo">
+              <h2 v-if="$store.state.ui.lang_ar" style="font-family: Cairo !important;letter-spacing: normal !important;direction: rtl;text-align: right;font-size: 25px;font-weight: bold">
+                معلومات عنا
+              </h2>
+              <h2 v-if="!$store.state.ui.lang_ar">
+                ABOUT US
+              </h2>
+              <v-divider/>
 
-                <p v-if="!$store.state.ui.lang_ar" style="text-align: justify;direction: ltr;font-size: 20px;line-height: 50px;padding: 10px">
-                  {{$store.state.render.settings[0].about_en}}
-                </p>
-                <p v-if="$store.state.ui.lang_ar" style="font-family: Cairo !important;text-align: justify;direction: rtl;font-size: 20px;line-height: 50px">
-                  {{$store.state.render.settings[0].about_ar}}
-                </p>
-              </div>
+              <p v-if="!$store.state.ui.lang_ar" style="text-align: justify;direction: ltr;font-size: 20px;line-height: 30px;padding: 10px">
+                {{$store.state.render.settings[0].about_en}}
+              </p>
+              <p v-if="$store.state.ui.lang_ar" style="font-family: Cairo !important;text-align: justify;direction: rtl;font-size: 20px;line-height: 30px">
+                {{$store.state.render.settings[0].about_ar}}
+              </p>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
+</v-app>
 
 
 
@@ -219,8 +221,8 @@
                 <p class="text-center f-cairo18" v-if="$store.state.ui.lang_ar">العناوين</p>
                 <ul>
                   <li><i class="fa fa-map-marker" aria-hidden="true"></i> {{settings[0].address}}</li>
-                  <li><i class="fa fa-phone" aria-hidden="true"></i> {{settings[0].website_phone}}<br>{{settings[0].website_phone}}</li>
-                  <li><i class="fa fa-envelope" aria-hidden="true"></i> <a :href="'mailto:'+settings[0].website_email">{{settings[0].website_email}}</a> <br><a :href="'mailto:'+settings[0].website_email">{{settings[0].website_email}}</a></li>
+                  <li><i class="fa fa-phone" aria-hidden="true"></i> {{settings[0].website_phone}}<br>{{settings[0].website_phone2}}</li>
+                  <li><i class="fa fa-envelope" aria-hidden="true"></i> <a :href="'mailto:'+settings[0].website_email">{{settings[0].website_email}}</a> </li>
                 </ul>
               </div>
             </div>

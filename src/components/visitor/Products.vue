@@ -139,5 +139,7 @@
 </script>
 
 <style scoped>
-
+*{
+    font-family: Cairo !Important;
+}
 </style>

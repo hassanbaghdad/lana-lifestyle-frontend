@@ -81,8 +81,8 @@
                                 <p class="text-center f-cairo18" v-if="$store.state.ui.lang_ar">العناوين</p>
                                 <ul>
                                     <li><i class="fa fa-map-marker" aria-hidden="true"></i> {{settings[0].address}}</li>
-                                    <li><i class="fa fa-phone" aria-hidden="true"></i> {{settings[0].website_phone}}<br>{{settings[0].website_phone}}</li>
-                                    <li><i class="fa fa-envelope" aria-hidden="true"></i> <a :href="'mailto:'+settings[0].website_email">{{settings[0].website_email}}</a> <br><a :href="'mailto:'+settings[0].website_email">{{settings[0].website_email}}</a></li>
+                                    <li><i class="fa fa-phone" aria-hidden="true"></i> {{settings[0].website_phone}}<br>{{settings[0].website_phone2}}</li>
+                                    <li><i class="fa fa-envelope" aria-hidden="true"></i> <a :href="'mailto:'+settings[0].website_email">{{settings[0].website_email}}</a> </li>
                                 </ul>
                             </div>
                         </div>
