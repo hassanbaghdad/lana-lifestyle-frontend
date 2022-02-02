@@ -20,7 +20,7 @@
                     <td class="text-center">{{social.title}}</td>
                     <td class="text-center">{{social.url}}</td>
                     <td class="text-center">
-                        <v-icon>{{social.icon}}</v-icon>
+                        <v-icon :color="social.color">{{social.icon}}</v-icon>
                     </td>
                     <td class="text-center">
                         <v-btn @click="set_social_to_edit(social)" icon><v-icon>mdi-pen</v-icon></v-btn>

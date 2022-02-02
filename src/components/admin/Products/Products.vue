@@ -63,7 +63,8 @@
                             {{item.brand_name_ar}}
                         </td>
                         <td class="text-center f18">
-                            <v-checkbox readonly  v-model="item.product_slide"></v-checkbox>
+                            <v-icon v-if="item.product_slide == 1">mdi-check</v-icon>
+                            <v-icon v-if="item.product_slide == 0">mdi-close</v-icon>
                         </td>
 
                         <td class="text-center">

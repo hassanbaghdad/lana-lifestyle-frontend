@@ -4,9 +4,9 @@
       <v-app :style="$vuetify.breakpoint.xs?'height: 250px':''">
         <v-carousel cycle interval="4000"  :height="$vuetify.breakpoint.xs?'200':'100%'" hide-delimiters>
             <v-carousel-item v-for="slide in slides" :key="slide.product_id">
-              <div class="myimg">
+              <div class="myimg" style="height: 100%" >
                 <router-link :to="'/product/'+slide.product_id">
-                  <v-img   :max-height="$vuetify.breakpoint.xs?'200':'900'" :src="$axios.defaults.baseURL+'/images/'+ slide.product_image">
+                  <v-img  :max-height="$vuetify.breakpoint.xs?'200':'900'" :src="$axios.defaults.baseURL+'/images/'+ slide.product_image">
                   </v-img>
                 </router-link>
 
@@ -29,18 +29,18 @@
             <div class="col-sm-6 col-xs-12">
 
               <div class="aboutInfo">
-                <h2 v-if="$store.state.ui.lang_ar" style="font-family: Cairo !important;letter-spacing: normal !important;">
+                <h2 v-if="$store.state.ui.lang_ar" style="font-family: Cairo !important;letter-spacing: normal !important;direction: rtl;text-align: right;font-size: 25px;font-weight: bold">
                   معلومات عنا
                 </h2>
                 <h2 v-if="!$store.state.ui.lang_ar">
                   ABOUT US
                 </h2>
+                <v-divider/>
 
-
-                <p v-if="!$store.state.ui.lang_ar">
+                <p v-if="!$store.state.ui.lang_ar" style="text-align: justify;direction: ltr;font-size: 20px;line-height: 50px;padding: 10px">
                   {{$store.state.render.settings[0].about_en}}
                 </p>
-                <p v-if="$store.state.ui.lang_ar" style="font-family: Cairo !important;text-align: justify;">
+                <p v-if="$store.state.ui.lang_ar" style="font-family: Cairo !important;text-align: justify;direction: rtl;font-size: 20px;line-height: 50px">
                   {{$store.state.render.settings[0].about_ar}}
                 </p>
               </div>
@@ -92,11 +92,11 @@
 
 
     <!-- HOME GALLERY SECTION -->
-   <v-app style="max-height: 400px">
-     <v-card class="pa-4">
+   <v-app :style="$vuetify.breakpoint.xs?'':'max-height: 500px'">
+     <v-card class="pa-4" :style="$store.state.ui.lang_ar?'direction:rtl;width:100%':'direction:ltr;width:100%'">
        <v-tabs
 
-               :style="$store.state.ui.lang_ar?'direction:rtl':'direction:ltr'"
+
        >
          <v-tab v-for="tab_brand in brands" :key="'tab_'+tab_brand.brand_id" @click="filter_images_products_by_brand_select(tab_brand.brand_id)"  color="primary">
            {{tab_brand.brand_name_ar}}
@@ -107,28 +107,34 @@
                  v-for="product_img in products"
                  :key="'product_img_'+product_img.product_id"
          >
-           <v-container fluid>
-             <v-row>
-               <v-col
-                       v-for="(p,i) in grid_images"
-                       :key="'i_'+p.product_id"
-                       cols="12"
-                       md="4"
-               >
-                 <div class="cover-img">
-                     <v-img
-                             @click="$store.state.target_product = p;$store.state.view = true"
-                             class="grid-img"
-                             max-height="350"
-                             :src="$axios.defaults.baseURL+'/images/'+ p.product_image"
-                             :lazy-src="`https://picsum.photos/10/6?image=${i * 5 + 10}`"
-                             aspect-ratio="1"
-                     ></v-img>
-                   </div>
-               </v-col>
+           <v-container fluid >
 
+              <v-row >
 
-             </v-row>
+                <v-col
+                        v-for="(p,i) in grid_images"
+                        :key="'i_'+p.product_id"
+                        cols="12"
+                        md="4"
+                >
+                  <div>
+                    <div class="cover-img">
+                      <v-img
+                              :contain="$vuetify.breakpoint.xs?true:false"
+                              @click="$store.state.target_product = p;$store.state.view = true"
+                              class="grid-img"
+                              max-height="350"
+                              :src="$axios.defaults.baseURL+'/images/'+ p.product_image"
+                              :lazy-src="`https://picsum.photos/10/6?image=${i * 5 + 10}`"
+                              aspect-ratio="1"
+                      ></v-img>
+                    </div>
+                    <v-divider/>
+                  </div>
+                </v-col>
+
+              </v-row>
+
            </v-container>
          </v-tab-item>
        </v-tabs>
@@ -137,6 +143,7 @@
 
 
     <!-- CALL TO ACTION SECTION -->
+  <v-app style="max-height: 300px;">
     <section class="clearfix callAction">
       <div class="container">
         <div class="row">
@@ -153,18 +160,17 @@
               </router-link>
             </a>
             <a v-if="$store.state.ui.lang_ar" class="btn btn-primary first-btn callBtn" style="font-family: Cairo !important;font-size: 20px">
-             <router-link to="/products" >
-               تصفح المنتجات
-             </router-link>
+              <router-link to="/products" >
+                تصفح المنتجات
+              </router-link>
             </a>
           </div>
         </div>
       </div>
     </section>
+  </v-app>
 
-    <!-- EXPERT SECTION -->
-    <!-- PARTNER LOGO SECTION -->
-    <!-- PARTNER LOGO SECTION -->
+<v-divider/>
     <!-------- CONTACT US --------->
     <div  >
       <!-- CONTACT US SECTION -->
@@ -185,7 +191,7 @@
                     <input v-model="message.name" type="text" name="contact-form-name" class="form-control f-cairo18" :placeholder="$store.state.ui.lang_ar?'الاسم الكامل':'Full name'" required>
                   </div>
                   <div class="form-group">
-                    <input  v-model="message.email" type="email" name="contact-form-email" class="form-control f-cairo18" :placeholder="$store.state.ui.lang_ar?'البريد الالكتروني':'E-mail'" required>
+                    <input  v-model="message.email" type="text" name="contact-form-email" class="form-control f-cairo18" :placeholder="$store.state.ui.lang_ar?'البريد الالكتروني':'E-mail'" >
                   </div>
                   <div class="form-group">
                     <input  v-model="message.phone" type="text" name="contact-form-mobile" class="form-control f-cairo18" :placeholder="$store.state.ui.lang_ar?'رقم الهاتف':'Phone'" required>
@@ -274,8 +280,12 @@ export default {
       console.log(brand_id)
     },
     async send_message(){
-      if(this.message.name != '' && this.message.email != '' && this.message.phone != '' && this.message.message )
+      if(this.message.name != ''  && this.message.phone != '' && this.message.message )
       {
+        if(this.message.email == "" || this.message.email == null)
+        {
+          this.message.email = "لايوجد";
+        }
         await this.$axios.post('api/send-message',this.message).then(res=>{
           this.$fire({
             title: "نجح",
@@ -415,6 +425,10 @@ export default {
     100% {
       margin-top: 0px;
     }
+  }
+  .v-slide-group__content
+  {
+
   }
 
 </style>

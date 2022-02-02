@@ -38,7 +38,11 @@
                                 </v-btn>
                             </v-col>
                             <v-col cols="12">
-                                <v-checkbox v-model="product.product_slide" class="f18"  label="عرض المنتج في السلايدر"></v-checkbox>
+                                <v-switch
+                                        v-model="product.product_slide"
+                                        label="عرض المنتج في السلايدر"
+                                        class="f18"
+                                ></v-switch>
                             </v-col>
                             <v-divider></v-divider>
                             <v-card-actions>
@@ -67,7 +71,7 @@
                     product_desc_en:'',
                     product_image:'',
                     brand_id_fk:'',
-                    product_slide:false
+                    product_slide:''
                 },
                 brands:this.$store.state.brands.brands,
                 valid:true,
@@ -133,6 +137,17 @@
         },
         watch:{
             get_product_to_edit:function (new_product) {
+
+                    if(new_product.product_slide == 0 && new_product.product_slide == '0' )
+                    {
+                        new_product.product_slide = false;
+                    }
+                    if(new_product.product_slide == 1 && new_product.product_slide == '1' )
+                    {
+                        new_product.product_slide = true;
+                    }
+
+
                 this.product = new_product;
             }
         },

@@ -33,11 +33,11 @@
                                         <h5>{{product.product_desc_ar}}</h5>
                                     </v-col>
                                     <v-col cols="12">
-                                        <v-btn block class="orange" @click="$store.state.target_brand=product.brand_id_fk;$router.push('/products')">
+                                        <div   text class="orange pa-2 text-center" @click="$store.state.target_brand=product.brand_id_fk;$router.push('/products')">
                                             <h5 v-if="!$store.state.ui.lang_ar" style="color: white">GO TO THIS BRAND PRODUCTS</h5>
                                             <h5 v-if="$store.state.ui.lang_ar" style="color: white;font-family: Cairo;font-size: 20px">الذهاب الى منتجات هذه الشركة</h5>
 
-                                        </v-btn>
+                                        </div>
 
                                     </v-col>
 
@@ -76,5 +76,7 @@
 </script>
 
 <style scoped>
-
+    .f-cairo{
+        font-family: Cairo !Important;
+    }
 </style>

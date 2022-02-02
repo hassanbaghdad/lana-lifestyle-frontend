@@ -24,10 +24,10 @@
             <div class="container pa-0" style="padding: 0px !important;">
               <div class="top-bar-right">
                 <ul :style="$vuetify.rtl?'direction: ltr':'direction: ltr'">
-                  <li :class="$vuetify.rtl?'float-left':'float-right'" style="margin-right: 5px;margin-left: 5px"><a :href="'mailto:'+settings[0].website_email" style="color: white"><i class="fa fa-envelope" aria-hidden="true"></i>{{settings[0].website_email}}</a></li>
-                  <li :class="$vuetify.rtl?'float-left':'float-right'" style="margin-right: 5px;margin-left: 5px"><a :href="'tel:'+settings[0].website_phone"  style="color: white"><i class="fa fa-phone" aria-hidden="true"></i>{{settings[0].website_phone}}</a></li>
-                  <li style="max-width: 40px !important;"  :class="$vuetify.rtl?'float-left':'float-right'" class="mt-1" >
-                    <v-btn style="color: white;" text @click="$store.state.ui.lang_ar = !$store.state.ui.lang_ar;$vuetify.rtl=!$vuetify.rtl "><i v-if="!$vuetify.breakpoint.xs" class="fa fa-language" aria-hidden="true"></i>{{$store.state.ui.lang_ar?'EN':'AR'}}</v-btn>
+                  <li :class="$vuetify.rtl?'float-left':'float-right'" style="margin-right: 5px;margin-left: 5px"><a :href="'mailto:'+settings[0].website_email" :style="$vuetify.breakpoint.xs?'color: white;font-size: 10px !important;':'color: white;'"><i class="fa fa-envelope" aria-hidden="true"></i>{{settings[0].website_email}}</a></li>
+                  <li :class="$vuetify.rtl?'float-left':'float-right'" style="margin-right: 5px;margin-left: 5px"><a :href="'tel:'+settings[0].website_phone"  :style="$vuetify.breakpoint.xs?'color: white;font-size: 10px !important;':'color: white;'"><i class="fa fa-phone" aria-hidden="true"></i>{{settings[0].website_phone}}</a></li>
+                  <li  :class="$vuetify.rtl?'float-left':'float-right'" class="mt-1" >
+                    <v-btn style="color: white;margin-right: 3px;margin-left: 3px" text @click="$store.state.ui.lang_ar = !$store.state.ui.lang_ar;$vuetify.rtl=!$vuetify.rtl ">{{$store.state.ui.lang_ar?'EN':'AR'}}</v-btn>
                   </li>
                 </ul>
               </div>
@@ -181,7 +181,7 @@
                   <v-row justify="center">
                     <v-col cols="12" v-for="social in socials" :key="'soc_'+social.id">
                       <v-btn :href="social.url" text class="d-inline-block float-left">
-                        <v-icon color="blue" large>{{social.icon}}</v-icon>
+                        <v-icon :color="social.color" large>{{social.icon}}</v-icon>
                         <span style="font-family: Cairo;font-weight: bold;margin-left: 5px">{{social.title}}</span>
                       </v-btn>
                     </v-col>
@@ -276,6 +276,7 @@
       margin-right: 300px;
     }
   }
+
 </style>
 
 <script>

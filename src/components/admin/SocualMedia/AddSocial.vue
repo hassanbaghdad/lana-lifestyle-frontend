@@ -16,11 +16,79 @@
                       <v-col cols="12">
                           <v-text-field :rules="req" v-model="social.url" outlined label="الرابط"></v-text-field>
                       </v-col>
-                      <v-col cols="12">
-                          <v-text-field :rules="req" outlined label="الايقونة" v-model="social.icon" hint="example: mdi-facebook , mdi-whatsapp"></v-text-field>
+                      <v-col cols="12" class="text-right">
+                          <span class="text-h5 text-right">الايقونة</span>
+                          <v-divider/>
+                      </v-col>
+                      <v-col cols="12"  md="3">
+                          <div class="text-center">
+                              <v-menu offset-y>
+                                  <template v-slot:activator="{ on, attrs }">
+                                      <v-btn
+                                              color="primary"
+                                              dark
+                                              v-bind="attrs"
+                                              v-on="on"
+                                      >
+                                          <v-icon color="white">{{social.icon}}</v-icon>
+                                          <span class="text-center text-h5 mr-4">الايقونة</span>
+
+                                      </v-btn>
+                                  </template>
+                                  <v-list>
+                                      <v-list-item
+                                              v-for="(item, index) in icons"
+                                              :key="index"
+                                              @click="set_icon(item.value)"
+                                      >
+                                          <v-list-item-title>{{ item.label }}</v-list-item-title>
+                                          <v-list-item-icon><v-icon>{{item.value}}</v-icon></v-list-item-icon>
+                                      </v-list-item>
+                                  </v-list>
+                              </v-menu>
+                          </div>
+                      </v-col>
+                      <v-col cols="12" md="3">
+                          <div class="text-center">
+                          <span class="text-h5">اللون</span>
+                          </div>
+                      </v-col>
+                      <v-col cols="12" md="3">
+                          <div class="text-center">
+                          <v-menu offset-y class="mr-2 ml-2">
+                              <template v-slot:activator="{ on, attrs }">
+                                  <v-btn
+                                          v-bind="attrs"
+                                          v-on="on"
+                                          :color="social.color"
+                                          @click="set_color(item.value)"
+                                  >
+                                      <span class="text-center text-h5 mr-4"></span>
+
+                                  </v-btn>
+                              </template>
+                              <v-list>
+                                  <v-list-item
+                                          v-for="(item, index) in colors"
+                                          :key="index"
+                                          @click="set_color(item.value)"
+                                          :color="item.value"
+                                  >
+                                      <v-list-item-title>{{ item.label }}</v-list-item-title>
+                                      <v-list-item-icon><v-icon :color="item.value">{{social.icon}}</v-icon></v-list-item-icon>
+                                  </v-list-item>
+                              </v-list>
+                          </v-menu>
+                          </div>
+                      </v-col>
+                      <v-col cols="12" md="3">
+                          <div class="text-center">
+                              <v-icon large :color="social.color">{{social.icon}}</v-icon>
+                          </div>
                       </v-col>
                       <v-col cols="12" class="text-right">
-                          <v-btn @click="save_social" :loading="loading" right class="blue" style="color: white">
+                          <v-divider/>
+                          <v-btn width="80" @click="save_social" :loading="loading" right class="blue" style="color: white">
                               <v-icon>mdi-content-save</v-icon>
                               <span class="text-h5 mr-2" >حفظ</span>
                           </v-btn>
@@ -44,17 +112,34 @@
                 social:{
                     title:'',
                     url:'',
-                    icon:'',
+                    icon:'mdi-facebook',
+                    color:'blue'
 
                 },
                 valid:true,
                 req:[v=>!!v || 'هذا الحقل مطلوب'],
                 icons:[
-                    {value:'mdi-facebook'},
-                    {value:'mdi-send'},
-                    {value:'mdi-whatsapp'},
-                    {value:'mdi-email'},
-                ]
+                    {label:'facebook',value:'mdi-facebook'},
+                    {label:'telegram',value:'mdi-send'},
+                    {label:'whatsapp',value:'mdi-whatsapp'},
+                    {label:'youtube',value:'mdi-youtube'},
+                    {label:'linkedin',value:'mdi-linkedin'},
+                    {label:'instagram',value:'mdi-instagram'},
+                    {label:'snapchat',value:'mdi-snapchat'},
+                    {label:'email',value:'mdi-email'},
+                ],
+                colors:[
+                    {label:'blue',value:'blue'},
+                    {label:'green',value:'green'},
+                    {label:'indigo',value:'indigo'},
+                    {label:'white',value:'white'},
+                    {label:'black',value:'black'},
+                    {label:'info',value:'info'},
+                    {label:'pink',value:'pink'},
+                    {label:'orange',value:'orange'},
+                    {label:'red',value:'red'},
+                ],
+
             }
         },
         methods:{
@@ -78,7 +163,16 @@
                         this.loading = false;
                     })
                 }
-            }
+            },
+            set_icon(icon)
+            {
+                this.social.icon = icon;
+            },
+            set_color(color)
+            {
+                this.social.color = color;
+            },
+
         }
     }
 </script>

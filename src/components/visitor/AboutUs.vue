@@ -53,7 +53,7 @@
                                         <input v-model="message.name" type="text" name="contact-form-name" class="form-control f-cairo18" :placeholder="$store.state.ui.lang_ar?'الاسم الكامل':'Full name'" required>
                                     </div>
                                     <div class="form-group">
-                                        <input  v-model="message.email" type="email" name="contact-form-email" class="form-control f-cairo18" :placeholder="$store.state.ui.lang_ar?'البريد الالكتروني':'E-mail'" required>
+                                        <input  v-model="message.email" type="email" name="contact-form-email" class="form-control f-cairo18" :placeholder="$store.state.ui.lang_ar?'البريد الالكتروني':'E-mail'" >
                                     </div>
                                     <div class="form-group">
                                         <input  v-model="message.phone" type="text" name="contact-form-mobile" class="form-control f-cairo18" :placeholder="$store.state.ui.lang_ar?'رقم الهاتف':'Phone'" required>
@@ -110,8 +110,12 @@
         },
         methods:{
             async send_message(){
-                if(this.message.name != '' && this.message.email != '' && this.message.phone != '' && this.message.message )
+                if(this.message.name != '' && this.message.phone != '' && this.message.message )
                 {
+                    if(this.message.email == "" || this.message.email == null)
+                    {
+                        this.message.email = "لايوجد";
+                    }
                     await this.$axios.post('api/send-message',this.message).then(res=>{
                         this.$fire({
                             title: "نجح",
