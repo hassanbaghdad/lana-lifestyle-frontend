@@ -94,15 +94,18 @@
 
 
     <!-- HOME GALLERY SECTION -->
-   <v-app :style="$vuetify.breakpoint.xs?'':'max-height: 500px'">
-     <v-card class="pa-4" :style="$store.state.ui.lang_ar?'direction:rtl;width:100%':'direction:ltr;width:100%'">
-       <v-tabs
 
+     <v-card class="pa-4 " :style="$store.state.ui.lang_ar?'direction:rtl;':'direction:ltr;'">
+       <v-tabs
+               v-model="tab"
+               show-arrows
 
        >
          <v-tab v-for="tab_brand in brands" :key="'tab_'+tab_brand.brand_id" @click="filter_images_products_by_brand_select(tab_brand.brand_id)"  color="primary">
            {{tab_brand.brand_name_ar}}
          </v-tab>
+
+
 
 
          <v-tab-item
@@ -141,10 +144,9 @@
          </v-tab-item>
        </v-tabs>
      </v-card>
-   </v-app>
 
 
-    <!-- CALL TO ACTION SECTION -->
+    <!-- View Products Bar -->
   <v-app style="max-height: 300px;">
     <section class="clearfix callAction">
       <div class="container">
@@ -259,6 +261,7 @@ export default {
   },
   data(){
     return{
+      tab:null,
       slides:this.$store.state.render.slides,
       brands:this.$store.state.render.brands,
       products:this.$store.state.render.products,

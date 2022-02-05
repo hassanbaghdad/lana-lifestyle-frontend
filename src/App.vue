@@ -161,10 +161,12 @@
                 <v-divider/>
                 <div class="footerGallery row">
 
-                  <div class="col-4 col-md-6 col-lg-4 mb-3 mb-md-0" v-for="pp in $store.state.render.products" :key="'img_in_footer'+pp.product_id">
-                    <a>
-                      <img @click="$store.state.target_product = pp; $store.state.view = true"  :src="$axios.defaults.baseURL+'/images/'+ pp.product_image"  alt="gallery-img">
-                    </a>
+                  <div class="col-4 col-md-6 col-lg-4 mb-3 mb-md-0" v-for="(pp,i) in $store.state.render.products" :key="'img_in_footer'+pp.product_id" >
+                    <div v-if="i < 9">
+                      <a >
+                        <img @click="$store.state.target_product = pp; $store.state.view = true"  :src="$axios.defaults.baseURL+'/images/'+ pp.product_image"  alt="gallery-img">
+                      </a>
+                    </div>
                   </div>
 
                 </div>
@@ -210,7 +212,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>0
         <ViewBrands/>
       </footer>
     </v-app>

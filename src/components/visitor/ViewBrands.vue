@@ -23,14 +23,19 @@
                     </v-col>
                     <v-col cols="12" md="6">
                         <v-card max-width="900">
-                            <v-card-title class="pa-4">
+                            <v-card-title style="width: 100%;text-align: right;direction: rtl" v-if="$store.state.ui.lang_ar" class="pa-4 rtl">
                                 <h5>{{product.product_title_ar}}</h5>
                             </v-card-title>
+                            <v-card-title style="width: 100%;text-align: left;direction: ltr" v-if="!$store.state.ui.lang_ar" class="pa-4">
+                                <h5>{{product.product_title_en}}</h5>
+                            </v-card-title>
+
                             <v-divider/>
                             <v-card-text class="pa-4">
                                 <v-row justify="center">
                                     <v-col cols="12">
-                                        <h5>{{product.product_desc_ar}}</h5>
+                                        <h5 style="width: 100%;text-align: right;direction: rtl" v-if="$store.state.ui.lang_ar">{{product.product_desc_ar}}</h5>
+                                        <h5 style="width: 100%;text-align: left;direction: ltr" v-if="!$store.state.ui.lang_ar">{{product.product_desc_en}}</h5>
                                     </v-col>
                                     <v-col cols="12">
                                         <div   text class="orange pa-2 text-center" @click="$store.state.target_brand=product.brand_id_fk;$router.push('/products')">

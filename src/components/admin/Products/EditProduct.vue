@@ -25,11 +25,16 @@
                             <v-col cols="12">
                                 <v-textarea :rules="req" class="f18" outlined v-model="product.product_desc_en"  label="وصف المنتج باللغة الانكليزية"></v-textarea>
                             </v-col>
+                            <v-col cols="12" class="text-center">
+                                <div style="width: 100%;direction: ltr">
+                                    1000px X 550px
+                                </div>
+                            </v-col>
                             <v-col cols="12">
                                 <v-sheet  outlined>
                                     <v-img max-height="150" contain :src="url==''?axios.defaults.baseURL+'/images/'+product.product_image:url"></v-img>
                                 </v-sheet>
-                                <input class="d-none" type="file" id="file" ref="file" v-on:change="onChangeFile()"/>
+                                <input accept="image/*" class="d-none" type="file" id="file" ref="file" v-on:change="onChangeFile()"/>
                             </v-col>
                             <v-col cols="12" class="text-center">
                                 <v-btn block outlined   right @click="$refs.file.click()">
@@ -90,7 +95,7 @@
                     formData.append('product_title_ar',this.product.product_title_ar);
                     formData.append('product_title_en',this.product.product_title_en);
                     formData.append('product_desc_ar',this.product.product_desc_ar);
-                    formData.append('product_desc_en',this.product.product_desc_ar);
+                    formData.append('product_desc_en',this.product.product_desc_en);
                     formData.append('image',this.$refs.file.files[0]);
                     formData.append('brand_id_fk',this.product.brand_id_fk);
                     formData.append('product_id',this.product.product_id);
@@ -126,7 +131,17 @@
             onChangeFile()
             {
                 const file = this.$refs.file.files[0];
-                this.url = URL.createObjectURL(file);
+                if(file.size > 1100000)
+                {
+                    this.$fire({
+                        title: "حجم الصورة كبيرا",
+                        text: "الحد الاقصى المسموح هو 1 ميكا بايت",
+                        type: "error",
+                        timer: 5000
+                    });
+                }else{
+                    this.url = URL.createObjectURL(file);
+                }
 
             },
         },
