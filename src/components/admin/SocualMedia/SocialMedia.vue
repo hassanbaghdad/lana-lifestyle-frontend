@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <v-card class="pa-4 text-right">
-            <v-btn dark fab small color="success" @click="$store.state.socials.forms.add_social = true"><v-icon>mdi-plus</v-icon></v-btn>
+            <v-btn dark fab small color="secondary" @click="$store.state.socials.forms.add_social = true"><v-icon>mdi-plus</v-icon></v-btn>
         </v-card>
         <v-simple-table>
             <template v-slot:default>

@@ -41,9 +41,12 @@
                         </router-link>
                     </v-col>
                     <v-col cols="12" md="3">
-                        <div style="height: 100%" class="d-flex align-items-center">
-                            <h4 class="d-flex pa-4">{{prod.product_title_ar}}</h4>
-                        </div>
+                      <div v-if="$store.state.ui.lang_ar" style="height: 100%" class="d-flex align-items-center">
+                        <h4 class="d-flex pa-4">{{prod.product_title_ar}}</h4>
+                      </div>
+                      <div v-if="!$store.state.ui.lang_ar" style="height: 100%" class="d-flex align-items-center">
+                        <h4 class="d-flex pa-4">{{prod.product_title_en}}</h4>
+                      </div>
 
                     </v-col>
                     <v-col cols="12" md="3">

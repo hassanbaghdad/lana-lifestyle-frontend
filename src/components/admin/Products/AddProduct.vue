@@ -3,9 +3,11 @@
         <v-dialog v-model="$store.state.products.forms.add_product" max-width="600">
             <v-form lazy-validation v-model="valid" ref="form">
                 <v-card>
-                    <v-card-title class="orange">
+                    <v-card-title class="secondary">
                         <v-icon color="white">mdi-plus</v-icon>
                         <span class="text-h5 mr-2" style="color:white;">اضافة منتج</span>
+                      <v-spacer></v-spacer>
+                      <v-btn @click="$store.state.products.forms.add_product=false" icon><v-icon color="white">mdi-close</v-icon></v-btn>
                     </v-card-title>
                     <v-divider></v-divider>
                     <v-card-text class="mt-16">

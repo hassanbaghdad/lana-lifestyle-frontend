@@ -65,7 +65,8 @@
                     </a>
                     <ul class="dropdown-menu">
                       <li v-for="li in brands" :key="li.brand_id" @click="go_to_brand(li.brand_id)" ><a>
-                        {{li.brand_name_ar}}
+                        <div v-if="$store.state.ui.lang_ar">{{li.brand_name_ar}}</div>
+                        <div v-if="!$store.state.ui.lang_ar">{{li.brand_name_en}}</div>
                       </a></li>
                     </ul>
                   </li>

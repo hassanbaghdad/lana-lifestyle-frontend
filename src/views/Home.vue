@@ -95,13 +95,13 @@
 
     <!-- HOME GALLERY SECTION -->
 
-     <v-card class="pa-4 " :style="$store.state.ui.lang_ar?'direction:rtl;':'direction:ltr;'">
+     <v-card class="pa-4 " >
        <v-tabs
+
                v-model="tab"
-               show-arrows
 
        >
-         <v-tab v-for="tab_brand in brands" :key="'tab_'+tab_brand.brand_id" @click="filter_images_products_by_brand_select(tab_brand.brand_id)"  color="primary">
+         <v-tab  v-for="tab_brand in brands" :key="'tab_'+tab_brand.brand_id" @click="filter_images_products_by_brand_select(tab_brand.brand_id)"  color="primary">
            {{tab_brand.brand_name_ar}}
          </v-tab>
 

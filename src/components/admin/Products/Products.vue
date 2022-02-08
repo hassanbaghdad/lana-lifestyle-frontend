@@ -4,7 +4,7 @@
                 <div class="card-header text-right">
                     <v-spacer></v-spacer>
                     <v-btn right dark fab class="secondary" small @click="$store.state.products.forms.add_product = true">
-                        <v-icon>mdi-plus</v-icon>
+                        <v-icon color="white">mdi-plus</v-icon>
                     </v-btn>
 
 
