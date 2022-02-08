@@ -371,7 +371,8 @@
           this.loaded = true;
           console.log(res.data)
         })
-      }
+      },
+
     },
     created(){
       this.check_url();
@@ -379,6 +380,7 @@
       this.$store.state.ui.lang_ar = true;
       this.$vuetify.rtl = false;
       this.render();
+
     },
     computed:{
       get_url:function () {
@@ -430,6 +432,9 @@
           this.$vuetify.rtl = true;
         }
       }
+    },
+    mounted(){
+
     }
   }
 </script>

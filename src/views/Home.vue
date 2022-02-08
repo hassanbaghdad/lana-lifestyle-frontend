@@ -18,7 +18,7 @@
 
 <v-app>
   <!-- ABOUT SECTION -->
-  <section class="container-fluid clearfix aboutSection patternbg" >
+  <section class="container-fluid clearfix aboutSection patternbg" @click="register_visitor">
     <div class="aboutInner">
       <div class="sepcialContainer">
         <div class="row">
@@ -307,9 +307,21 @@ export default {
       }
 
     },
+    async register_visitor(){
+
+      await this.$axios.get('https://ipinfo.io?token=6a267a8959588f').then(res=>{
+        console.log(res.data)
+        this.axios.post('api/register-visitor',{country:res.data.country,ip:res.data.ip}).then(res2=>{
+         console.log(res2)
+       })
+      })
+    }
 
 
 
+  },
+  created(){
+   this.register_visitor();
   },
   computed:{
     get_slides:function () {

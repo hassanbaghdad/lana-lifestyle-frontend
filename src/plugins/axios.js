@@ -9,6 +9,11 @@ import axios from "axios";
 axios.defaults.baseURL =  'https://lana-lifestyle.com/lifestyle_backend/public/';
 //axios.defaults.headers.common['Authorization'] = 'Bearer '+ localStorage.getItem('token');
 axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
+axios.defaults.headers.common["Access-Control-Allow-Methods"] = "GET, PUT, POST, DELETE, OPTIONS, post, get";
+axios.defaults.headers.common["Access-Control-Max-Age"] = "3600";
+axios.defaults.headers.common["Access-Control-Allow-Headers"] = "Origin, Content-Type, X-Auth-Token";
+axios.defaults.headers.common["Access-Control-Allow-Credentials"] = "true";
+axios.defaults.headers.common["Content-Type"] = "application/json";
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 let config = {

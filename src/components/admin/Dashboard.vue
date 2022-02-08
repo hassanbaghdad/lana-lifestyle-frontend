@@ -52,11 +52,16 @@
                             </v-tab>
                             <v-tab href="#tab-5">
                                 <span class="text-h5 font-weight-bold">
+                                     التقارير
+                                </span>
+
+                            </v-tab>
+                            <v-tab href="#tab-6">
+                                <span class="text-h5 font-weight-bold">
                                      اعدادات الموقع
                                 </span>
 
                             </v-tab>
-
                         </v-tabs>
                     </template>
                 </v-toolbar>
@@ -75,6 +80,9 @@
                         <SocialMedia/>
                     </v-tab-item>
                     <v-tab-item value="tab-5">
+                        <Report/>
+                    </v-tab-item>
+                    <v-tab-item value="tab-6">
                         <Settings/>
                     </v-tab-item>
 
@@ -91,7 +99,7 @@
     import Settings from "@/components/admin/Settings/Settings";
     import SocialMedia from "@/components/admin/SocualMedia/SocialMedia";
     import Account from "@/components/admin/Account/Account";
-
+    import Report from "@/components/admin/Reporting/Report";
     export default {
         name: "Dashboard",
         components:{
@@ -100,7 +108,8 @@
             Settings,
             Messages,
             SocialMedia,
-            Account
+            Account,
+            Report
         },
         data () {
             return {
