@@ -97,11 +97,11 @@
 
      <v-card class="pa-4 " >
        <v-tabs
-
+              show-arrows
                v-model="tab"
 
        >
-         <v-tab  v-for="tab_brand in brands" :key="'tab_'+tab_brand.brand_id" @click="filter_images_products_by_brand_select(tab_brand.brand_id)"  color="primary">
+         <v-tab  v-for="tab_brand in brands" :key="'tab_'+tab_brand.brand_id" @click="filter_images_products_by_brand_select(tab_brand.brand_id)"   color="primary">
            {{tab_brand.brand_name_ar}}
          </v-tab>
 
@@ -282,7 +282,7 @@ export default {
     {
 
       this.grid_images = this.$store.state.render.products.filter(item=>item.brand_id_fk == brand_id);
-      console.log(brand_id)
+
     },
     async send_message(){
       if(this.message.name != ''  && this.message.phone != '' && this.message.message )
@@ -306,7 +306,9 @@ export default {
         })
       }
 
-    }
+    },
+
+
 
   },
   computed:{
@@ -324,6 +326,9 @@ export default {
     },
     get_settings:function () {
       return this.$store.state.render.settings;
+    },
+    get_current_tab:function () {
+      return this.tab;
     }
 
   },
@@ -348,6 +353,9 @@ export default {
     },
     get_settings:function (new_settings) {
       this.settings = new_settings;
+    },
+    get_current_tab:function (new_tab_index) {
+      this.filter_images_products_by_brand_select(this.$store.state.render.brands[new_tab_index].brand_id)
     }
 
 

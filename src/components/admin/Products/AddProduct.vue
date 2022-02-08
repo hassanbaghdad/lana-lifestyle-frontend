@@ -119,6 +119,7 @@
                         this.$store.state.products.forms.add_product = false;
                         this.$store.commit('GET_PRODUCTS');
                         this.product = [];
+                        this.$refs.file.files = [];
                         this.url = '';
                     }).catch(err=>{
                         console.log(err)
